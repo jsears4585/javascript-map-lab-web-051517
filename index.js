@@ -1,4 +1,4 @@
-const knownDecepticons = ['Megatron', 'Skywarp', 'Laserbeak', 'Barricade'];
+const knownDecepticons = ['Megatron', 'Skywarp', 'Laserbeak', 'Barricade']
 
 const robots = [
   { name: 'Bumblebee', alliance: null },
@@ -9,7 +9,14 @@ const robots = [
   { name: 'Megatron', alliance: null },
   { name: 'Ironhide', alliance: null },
   { name: 'Ratchet', alliance: null }
-];
+]
+
+let sortedRobots = robots.map(function(robot) {
+  let isEvil = knownDecepticons.includes(robot.name)
+  return Object.assign({}, robot, {
+    alliance: isEvil ? 'decepticon' : 'autobot'
+  })
+})
 
 const zebraStripes = [
   { width: 9.12, color: null },
@@ -20,4 +27,11 @@ const zebraStripes = [
   { width: 7.77, color: null },
   { width: 0.59, color: null },
   { width: 7.31, color: null }
-];
+]
+
+let coloredZebraStripes = zebraStripes.map(function(stripe) {
+  let isBlackStripe = zebraStripes.indexOf(stripe) % 2 === 0
+  return Object.assign({}, stripe, {
+    color: isBlackStripe ? "black" : "white"
+  })
+})
